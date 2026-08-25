@@ -1,0 +1,28 @@
+public class Main {
+
+    public static int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public static int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
+    }
+
+    public static void main(String[] args) {
+
+        int[] a = {8, 10, 4, 15, 12, 18, 20};
+
+        int lcm = a[0];
+
+        for (int i = 1; i < a.length; i++) {
+            lcm = lcm(lcm, a[i]);
+        }
+
+        System.out.println("THE LCM IS " + lcm);
+    }
+}
