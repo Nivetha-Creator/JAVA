@@ -1,29 +1,29 @@
 public class Main {
-    public static void main(String[] args) {
 
-        int count = 0;
+    public static int san(int a, int b) {
 
-        for (int i = 150; i <= 250; i++) {
+        int big = Math.max(a, b);
+        int small = Math.min(a, b);
 
-            int n = i;
-            int primeCount = 0;
+        int lcm = big;
 
-            while (n != 0) {
-                int d = n % 10;
-
-                if (d == 2 || d == 3 || d == 5 || d == 7) {
-                    primeCount++;
-                }
-
-                n = n / 10;
-            }
-
-            if (primeCount == 2) {
-                count++;
-                System.out.println(i);
-            }
+        while (lcm % small != 0) {
+            lcm = lcm + big;
         }
 
-        System.out.println("Total = " + count);
+        return lcm;
+    }
+
+    public static void main(String[] args) {
+
+        int[] a = {8, 10, 4, 15, 12, 18, 20};
+
+        int lcm = a[0];
+
+        for (int i = 1; i < a.length; i++) {
+            lcm = san(lcm, a[i]);
+        }
+
+        System.out.println("THE LCM IS " + lcm);
     }
 }
